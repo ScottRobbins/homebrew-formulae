@@ -5,11 +5,8 @@ class Hoard < Formula
   head "https://github.com/ScottRobbins/Hoard.git"
 
   def install
-    system "./configure", "--disable-debug",
-                          "--disable-dependency-tracking",
-                          "--disable-silent-rules",
-                          "--prefix=#{prefix}"
-    system "make", "install"
+    system "swift", "build", "-c", "release", "--disable-sandbox"
+    bin.install ".build/x86_64-apple-macosx/release/hoard"
   end
 
   test do
