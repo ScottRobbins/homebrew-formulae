@@ -5,7 +5,7 @@ class Hoard < Formula
   head "https://github.com/ScottRobbins/Hoard.git"
 
   def install
-    system "make", "install", "prefix=#{prefix}"
+    system "make", "install", "prefix=/usr/local"
   end
 
   test do
