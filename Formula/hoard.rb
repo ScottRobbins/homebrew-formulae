@@ -5,10 +5,14 @@ class Hoard < Formula
   head "https://github.com/ScottRobbins/Hoard.git"
 
   def install
-    system "make", "install", "prefix=/usr/local"
+    system "./configure", "--disable-debug",
+                          "--disable-dependency-tracking",
+                          "--disable-silent-rules",
+                          "--prefix=#{prefix}"
+    system "make", "install"
   end
 
   test do
-    system "true"
+    system "#{bin}/hoard" "--help"
   end
 end
